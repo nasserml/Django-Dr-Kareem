@@ -1,0 +1,90 @@
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
+from django.shortcuts import render
+
+def hello_world(request):
+    return HttpResponse('''
+                        
+    <h1 style="background-color: aquamarine; color:brown; border: 4px solid black; margin: 15px; text-align: center; width:: 300px ;">
+    Hello from Django
+</h1>
+                        
+                        ''')
+    
+    
+@csrf_exempt
+def addxy(request):
+    if(request.method == 'POST'):
+        
+        x = int(request.POST.get('firstvalue'))
+        y = int(request.POST.get('secondvalue'))
+        
+        z = x + y
+        return HttpResponse("Result = " + str(z))
+
+    else:
+        return HttpResponse('''
+                            
+                            <form action="addtwonumbers" method="POST">
+        <p>
+            <label for="firstvalue"> Enter First Number</label>
+            <input type="text" name="firstvalue"/>
+        </p>
+
+        <p>
+            <label for="secondvalue"> Enter Second Number</label>
+            <input type="text" name="secondvalue"/>
+        </p>
+
+        <button type="submit">ADD</button>
+
+    </form>
+                            ''')
+
+
+from .forms import InputForm
+def add(request):
+    
+    z = 0
+    
+    form = InputForm()
+    
+    if request.method == 'POST':
+        form = InputForm(request.POST)
+        
+        if form.is_valid():
+            cd = form.cleaned_data
+            x = cd['x']
+            y = cd['y']
+            
+            z = x + y
+            
+    
+    return render(request, 'pages/addition.html', {'form':form, 'output':z})
+    
+def performArithmetic(request):
+    x = 1
+    y = 1
+    form = InputForm()
+    
+    if request.method == 'POST':
+        form = InputForm(request.POST)
+        
+        if form.is_valid():
+            cd = form.cleaned_data
+            x = cd['x']
+            y = cd['y']
+            
+            
+            
+    
+    return render(request, 'pages/arithmetic.html', {'form':form, 
+                                                     'x' : x, 'y':y,
+                                                     'r1': x + y,
+                                                     'r2': x - y,
+                                                     'r3': x * y,
+                                                     'r4': x // y,
+                                                     'r5': x % y,
+                                                     })
+        
