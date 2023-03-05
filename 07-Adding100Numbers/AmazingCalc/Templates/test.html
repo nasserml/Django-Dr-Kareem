@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form action="/test/" method="POST">
+    {% csrf_token %}
+
+    {% for form in forms %}
+      {{form.as_p}}
+    {% endfor %}
+   
+
+    <input type="submit" value = "Calc">
+
+  </form>
+
+  <h1> {{output}} </h1>
+{% endblock  %}
