@@ -1,0 +1,20 @@
+{% extends "Bookapp/index.html" %}
+
+{% block content %}
+
+<table class="dd" style="width: 100%;">
+    {% for dept in departments  %}
+
+        <tr>
+            <td class="dd"> {{dept.code}} </td>
+            <td class="dd">{{dept.name}}</td>
+            <td class="dd">{{dept.description}}</td>
+            <td class="dd">{{dept.dept_date}}</td>
+        </tr>
+        
+    
+
+    {% endfor %}
+</table>
+
+{% endblock %}
