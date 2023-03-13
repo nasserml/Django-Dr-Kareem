@@ -1,0 +1,26 @@
+{% extends "Bookapp/index.html" %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <h1>The Largest Library in the middle East</h1>
+    <p>you can find any Book about computing</p>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for dept in departments  %}
+
+            <div class="col-sm-4">
+                <h4> {{dept.code}} {{dept.name}}</h4>
+                <hr class="my-1">
+                <h6 class="text-muted">{{dept.dept_date}}</h6>
+                <p>{{dept.description}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
