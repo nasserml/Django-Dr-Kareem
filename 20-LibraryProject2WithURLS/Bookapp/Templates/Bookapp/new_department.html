@@ -1,0 +1,23 @@
+{% extends "Bookapp/index.html" %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <h1>The Largest Library in the middle East</h1>
+    <p>you can find any Book about computing</p>
+
+</div>
+
+<div class="container">
+
+    <form action="/NewDepartment/" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Add New Department">
+    </form>
+   
+
+</div>
+
+
+{% endblock %}
