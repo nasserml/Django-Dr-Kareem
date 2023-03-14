@@ -40,3 +40,18 @@ def addNewBook(request, dept_id):
     
     return render(request,'Bookapp/AddnewBook.html',
                   {'Department': dept, 'form':form})
+    
+    
+from .forms import MySignUpForm
+from django.contrib.auth import login
+def signmeUp(request):
+    form = MySignUpForm(request.POST or None, request.FILES or None)
+    
+    if form.is_valid():
+        user = form.save()
+        
+        login(request, user)
+        
+        return redirect('list_all_departments')
+    
+    return render(request, 'Bookapp/Sign_up.html', {'form':form})

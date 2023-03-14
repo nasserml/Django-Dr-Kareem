@@ -19,6 +19,7 @@ from Bookapp.views import retriavedepartments
 from Bookapp.views import deptDisplay
 from Bookapp.views import AddNewDepartment
 from Bookapp.views import addNewBook
+from Bookapp.views import signmeUp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,6 @@ urlpatterns = [
     path('Department/<int:dept_id>', deptDisplay, name = 'display_department'),
     path('NewDepartment/', AddNewDepartment, name = 'add_new_department'),
     path('Department/<int:dept_id>/newBook', addNewBook, name = 'add_new_book'),
+    path('Department/<int:dept_id>/newBook', addNewBook, name = 'add_new_book'),
+    path('Signup/', signmeUp, name= 'sign_up_to_library'),
 ]

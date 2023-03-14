@@ -21,12 +21,18 @@
 </head>
 <body>
 
-    <header style="background-color: black; color: aquamarine;
-        font-size: larger; font-weight: bolder; padding: 20px; margin-bottom: 20px; text-align: center;">
-
-        Welcome to my Library
-
-    </header>
+    <div class="row">
+        <div class="col-md-10 font-weight-bolder" style="text-shadow: 2px 2px 20px brown;">
+            Welcome to my Library
+        </div>
+        <div class="col-md-2 font-weight-bolder">
+            {% if user.is_authenticated %}
+                Welcome <span class="text-success">{{user.username}}</span>
+            {% else %}
+                <a href="{% url 'sign_up_to_library' %}" class="text-danger"> Sign up</a>
+            {% endif %}
+        </div>
+    </div>
 
     {% block content %}
       
