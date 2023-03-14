@@ -18,10 +18,12 @@ from django.urls import path
 from Bookapp.views import retriavedepartments
 from Bookapp.views import deptDisplay
 from Bookapp.views import AddNewDepartment
+from Bookapp.views import addNewBook
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('DeptAll/', retriavedepartments, name ='list_all_departments'),
     path('Department/<int:dept_id>', deptDisplay, name = 'display_department'),
     path('NewDepartment/', AddNewDepartment, name = 'add_new_department'),
+    path('Department/<int:dept_id>/newBook', addNewBook, name = 'add_new_book'),
 ]
